@@ -3,8 +3,10 @@
 import sys
 from collections import Counter
 import pandas as pd
+import requests
 
-if len(sys.argv)==3:
+print(len(sys.argv))
+if (len(sys.argv)==2) or (len(sys.argv)==3):
     print('good')
     print("number of arguments is:", len(sys.argv)-1)
 else:
@@ -14,7 +16,7 @@ else:
 
 counter = 0
 listing =[]
-tagurl = sys.argv[2]
+tagurl = sys.argv[1]
 print("URL outside", tagurl)
 
 from html.parser import HTMLParser
@@ -23,7 +25,7 @@ from html.parser import HTMLParser
 class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         global counter, tagurl
-        print("Start tag:", tag)
+        #print("Start tag:", tag)
         listing.append(tag)
 
         counter += 1
@@ -51,13 +53,13 @@ class MyHTMLParser(HTMLParser):
 #            c = unichr(int(name))
 #        print("Num ent  :", c)
 
-#def handle_decl(self, data):       
+#def handle_decl(self, data):
 #    print("Decl     :", data)
 
 parser = MyHTMLParser()
 
-import requests
-print("URL inside:", sys.argv[2])
+
+print("URL inside:", sys.argv[1])
 r = requests.get(tagurl)
 info = r.text
 #info = '<html><head><title>Test</title></head>''<body><h1>Parse me!</h1><p><br><br></p><p>324324</p><p>ddd</p></body></html>'
@@ -70,4 +72,3 @@ print('countlist:', countlist)
 #pandalist = pd.Series(list).value_counts()
 pandalist = countlist#.count()
 print("\npandalist:\n", pandalist)
-
