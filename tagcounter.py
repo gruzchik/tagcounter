@@ -16,6 +16,7 @@ else:
 
 counter = 0
 listing =[]
+existing_tag = False
 tagurl = sys.argv[1]
 print("URL outside", tagurl)
 
@@ -66,7 +67,16 @@ info = r.text
 print(info)
 #print massive
 parser.feed(info)
+print("\ncounter = "+str(counter))
 countlist = dict(Counter(listing))
+
+if (len(sys.argv)==3):
+    for element in countlist:
+        if element == sys.argv[2]:
+            print("number of tag \""+str(sys.argv[2])+"\" =  "+str(countlist[sys.argv[2]]))
+            existing_tag = True
+    if existing_tag != True:
+        print("the tag \""+str(sys.argv[2])+"\" does not exists in website\n")
 print('countlist:', countlist)
 #print('list', listing)
 #pandalist = pd.Series(list).value_counts()
