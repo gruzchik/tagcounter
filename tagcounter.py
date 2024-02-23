@@ -33,13 +33,10 @@ class MyHTMLParser(HTMLParser):
 
 parser = MyHTMLParser()
 
-
 print("URL inside:", sys.argv[1])
 r = requests.get(tagurl)
 info = r.text
-#info = '<html><head><title>Test</title></head>''<body><h1>Parse me!</h1><p><br><br></p><p>324324</p><p>ddd</p></body></html>'
 print(info)
-#print massive
 parser.feed(info)
 print("\ncounter = "+str(counter))
 countlist = dict(Counter(listing))
@@ -52,7 +49,6 @@ if (len(sys.argv)==3):
     if existing_tag != True:
         print("the tag \""+str(sys.argv[2])+"\" does not exists in website\n")
 print('countlist:', countlist)
-#print('list', listing)
 #pandalist = pd.Series(list).value_counts()
 pandalist = countlist#.count()
 print("\npandalist:\n", pandalist)
