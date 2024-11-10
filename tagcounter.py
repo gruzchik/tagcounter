@@ -18,7 +18,7 @@ else:
     print("number of arguments is:", len(sys.argv)-1)
     sys.exit(1)
 
-counter = 0
+COUNT = 0
 listing =[]
 existing_tag = False
 tagurl = sys.argv[1]
@@ -29,11 +29,11 @@ from html.parser import HTMLParser
 
 class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
-        global counter, tagurl
+        global COUNT, tagurl
         #print("Start tag:", tag)
         listing.append(tag)
 
-        counter += 1
+        COUNT += 1
 
 parser = MyHTMLParser()
 
@@ -42,7 +42,7 @@ r = requests.get(tagurl)
 info = r.text
 print(info)
 parser.feed(info)
-print("\ncounter = "+str(counter))
+print("\ncounter = "+str(COUNT))
 countlist = dict(Counter(listing))
 
 if (len(sys.argv)==3):
