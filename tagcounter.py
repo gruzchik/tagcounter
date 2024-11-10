@@ -20,7 +20,7 @@ else:
 
 COUNT = 0
 listing =[]
-existing_tag = False
+EXISTING_TAG = False
 tagurl = sys.argv[1]
 print("URL outside", tagurl)
 
@@ -49,8 +49,8 @@ if (len(sys.argv)==3):
     for element in countlist:
         if element == sys.argv[2]:
             print("number of tag \""+str(sys.argv[2])+"\" =  "+str(countlist[sys.argv[2]]))
-            existing_tag = True
-    if existing_tag != True:
+            EXISTING_TAG = True
+    if EXISTING_TAG != True:
         print("the tag \""+str(sys.argv[2])+"\" does not exists in website\n")
 print('countlist:', countlist)
 #pandalist = pd.Series(list).value_counts()
