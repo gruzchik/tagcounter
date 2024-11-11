@@ -6,7 +6,7 @@ Script for parsing of html tags
 
 import sys
 from collections import Counter
-import pandas as pd
+# import pandas as pd
 import requests
 
 print(len(sys.argv))
