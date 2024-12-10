@@ -50,7 +50,7 @@ if (len(sys.argv)==3):
         if element == sys.argv[2]:
             print("number of tag \""+str(sys.argv[2])+"\" =  "+str(countlist[sys.argv[2]]))
             EXISTING_TAG = True
-    if EXISTING_TAG != True:
+    if EXISTING_TAG is not True:
         print("the tag \""+str(sys.argv[2])+"\" does not exists in website\n")
 print('countlist:', countlist)
 #pandalist = pd.Series(list).value_counts()
